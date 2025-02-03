@@ -9,6 +9,7 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+/** @type { import("eslint").Linter.Config[] } */
 const eslintConfig = [
   ...compat.extends(
     "next/core-web-vitals",
@@ -16,6 +17,22 @@ const eslintConfig = [
     "plugin:tailwindcss/recommended",
     "prettier",
   ),
+  {
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          args: "all",
+          argsIgnorePattern: "^_",
+          caughtErrors: "all",
+          caughtErrorsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          ignoreRestSiblings: true,
+        },
+      ],
+    },
+  },
 ];
 
 export default eslintConfig;
