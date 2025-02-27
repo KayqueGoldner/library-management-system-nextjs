@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { bookSchema } from "@/lib/validations";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { FileUpload } from "@/components/file-upload";
 
 interface BookFormProps extends Partial<Book> {
   type?: "create" | "update";
@@ -163,7 +164,17 @@ export const BookForm = ({ type, ...book }: BookFormProps) => {
                 <FormLabel className="text-base font-normal text-dark-500">
                   Book Image
                 </FormLabel>
-                <FormControl>{/* TODO: file upload */}</FormControl>
+                <FormControl>
+                  <FileUpload
+                    type="image"
+                    accept="image/*"
+                    placeholder="Upload a book cover"
+                    folder="books/covers"
+                    variant="light"
+                    onFileChange={field.onChange}
+                    value={field.value}
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -189,7 +200,17 @@ export const BookForm = ({ type, ...book }: BookFormProps) => {
                 <FormLabel className="text-base font-normal text-dark-500">
                   Book Trailer
                 </FormLabel>
-                <FormControl>{/* TODO: file upload */}</FormControl>
+                <FormControl>
+                  <FileUpload
+                    type="video"
+                    accept="video/*"
+                    placeholder="Upload a book trailer"
+                    folder="books/videos"
+                    variant="light"
+                    onFileChange={field.onChange}
+                    value={field.value}
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
