@@ -1,6 +1,9 @@
+"use client";
+
 import { BookCoverSvg } from "@/components/book-cover-svg";
+import config from "@/lib/config";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { IKImage } from "imagekitio-next";
 
 type BookCoverVariant = "extraSmall" | "small" | "medium" | "regular" | "wide";
 
@@ -43,11 +46,14 @@ export const BookCover = ({
           height: "88%",
         }}
       >
-        <Image
-          src={coverImage}
+        <IKImage
+          path={coverImage}
+          urlEndpoint={config.env.imagekit.urlEndpoint}
           alt="book cover"
           fill
           className="rounded-sm object-fill"
+          loading="lazy"
+          lqip={{ active: true }}
         />
       </div>
     </div>
