@@ -5,7 +5,14 @@ import { cn } from "@/lib/utils";
 import { BookCover } from "@/components/book-cover";
 import { Button } from "@/components/ui/button";
 
-export const BookCard = ({ id, title, genre, coverColor, coverUrl }: Book) => {
+export const BookCard = ({
+  id,
+  title,
+  genre,
+  coverColor,
+  coverUrl,
+  isLoanedBook = false,
+}: Book) => {
   return (
     <li className={cn(isLoanedBook && "w-full xs:w-52")}>
       <Link
